@@ -1,5 +1,5 @@
-var Generator = require('yeoman-generator');
-var MergeJson = require('merge-json');
+const Generator = require('yeoman-generator');
+const MergeJson = require('merge-json');
 
 module.exports = class extends Generator {
 

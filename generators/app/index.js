@@ -1,4 +1,5 @@
-var Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator');
+const urlRegex = require('url-regex');
 
 module.exports = class extends Generator {
 
@@ -6,7 +7,8 @@ module.exports = class extends Generator {
         return this.prompt([{
             type     : 'input',
             name     : 'extension_name',
-            message  : 'What is the name of your extension?'
+            message  : 'What is the name of your extension?',
+            validate : input => input.length > 0 ? true : 'Extension name is required'
         }, {
             type     : 'input',
             name     : 'extension_short_name',
@@ -22,7 +24,8 @@ module.exports = class extends Generator {
         }, {
             type     : 'input',
             name     : 'extension_homepage_url',
-            message  : 'What is the homepage URL of your extension?'
+            message  : 'What is the homepage URL of your extension?',
+            validate : input => urlRegex().test(input) ? true : 'Please enter a valid URL'
         }]).then(answers => {
             this.answers = answers;
 

@@ -1,5 +1,5 @@
 {
-    "name": "<%= extension_name %>",
+    "name": "<%= (extension_name.toLowerCase().replace(/[^\w\s-_]/gi, '').replace(/\s+/g, '-')) %>",
     "version": "0.0.0",
     "license": "<%= extension_license %>",
     "scripts": {
