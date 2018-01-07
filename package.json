@@ -1,0 +1,17 @@
+{
+  "name": "generator-web-browser-extension",
+  "version": "0.0.1",
+  "description": "Generates a browser extension using webpack. Compatible with browsers that support the WebExtension API",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.0.0"
+  },
+  "devDependencies": {
+    "merge-json": "0.1.0-b.3"
+  }
+}
