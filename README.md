@@ -32,7 +32,7 @@ That's it! You can now start writing code. Changes you make will trigger the bro
 
 # Angular
 
-Angular and the Angular CLI is used for the action and options page under the (actions and options folders in src/). Each one is a separate application under the .angular-cli.json config file. The building of them is automated in Gulp.
+Angular and the Angular CLI is used for the action and options page under the (actions and options folders in src/). Each one is a separate application under the .angular-cli.json config file. Version 1.6+ of the Angular CLI is a prerequisite that must be installed. The building of them is automated in Gulp.
 
 To add a new component for your browser action run:
 
