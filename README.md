@@ -1,1 +1,1 @@
-# generator-web-extension
+# generator-web-browser-extension
