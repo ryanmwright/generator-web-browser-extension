@@ -34,6 +34,18 @@ That's it! You can now start writing code. Changes you make will trigger the bro
 
 Angular and the Angular CLI is used for the action and options page under the (actions and options folders in src/). Each one is a separate application under the .angular-cli.json config file. The building of them is automated in Gulp.
 
+To add a new component for your browser action run:
+
+```
+ng g c mycomponent --app=action
+```
+
+To add a new component for your options page run:
+
+```
+ng g c mycomponent --app=options
+```
+
 # Build Pipeline
 
 To package your application for production run:
