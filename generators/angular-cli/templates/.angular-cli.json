@@ -6,7 +6,7 @@
   "apps": [
     {
       "name": "action",
-      "root": "src/action",
+      "root": "src",
       "outDir": "dist",
       "assets": [
         "assets",
