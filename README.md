@@ -6,7 +6,7 @@ This is a Yeoman generator that scaffolds (typescript) code for a browser extens
 - Webpack with hot reload that reloads the extension in the browser automatically
 - A build pipeline to build and package your app
 
-Right now, only the base extension with Angular apps for the browser action and options pages is supported.
+Right now, only the base extension with Angular apps for the browser action/page and options pages is supported. By default the action is set to be a browser action in manifest.json, but can be changed to be a page action by modifying that file.
 
 # Getting started
 
