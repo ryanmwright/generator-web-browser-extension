@@ -2,7 +2,21 @@ import gulp from 'gulp';
 import path from 'path';
 import chalk from 'chalk';
 import childProcess from 'child_process';
-import { build as coreBuild, sendHotReloadChangeNotification, getEnvironmentDistDirectory } from './index';
+import { build as coreBuild, sendHotReloadChangeNotification, getEnvironmentDistDirectory, AppRegistry } from './index';
+
+/**
+ * Override the app registry to include the action and options pages. 
+ * This we ensure we only send reload requests to the browser after all apps are initially loaded.
+ */
+export class AngularAppRegistry extends AppRegistry {
+	constructor() {
+  	super();
+    this.apps["action"] = this.createAppDefaultValue();
+    this.apps["options"] = this.createAppDefaultValue();
+  }
+}
+
+global.appRegistry = new AngularAppRegistry();
 
 /**
  * 
@@ -49,6 +63,7 @@ function _build(opts) {
                 handle.stdout.on('data', data => {
                     let dataStr = data.toString();
                     if (dataStr.indexOf("Hash: ") > -1) {
+                        global.appRegistry.setAppInitialized(opts.app.toLowerCase());
                         console.log(chalk.underline.bold.bgRed.yellow('The angular app "' + opts.app + '" has been reloaded'));
                         sendHotReloadChangeNotification();
                     }

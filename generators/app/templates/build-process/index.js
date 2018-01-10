@@ -7,6 +7,48 @@ import chalk from 'chalk';
 import io from 'socket.io';
 import del from 'del';
 import zip from 'gulp-zip';
+import { Subject, Observable } from 'rxjs';
+
+const hotReloadSubject = new Subject();
+const delayBetweenEventNotifications = 500;
+
+const hotReloadObservable = hotReloadSubject.debounce(() => Observable.timer(delayBetweenEventNotifications));
+
+hotReloadObservable.subscribe(send => {
+    global.hotReloadNotificationSocket.emit('onFileChange');
+    console.log(chalk.underline.bold.bgRed.yellow('Extension reload request has been sent'));
+});
+
+/**
+ * 
+ */
+export class AppRegistry {
+	constructor() {
+  	this.apps = {};
+    this.apps["core"] = this.createAppDefaultValue();
+  }
+  createAppDefaultValue() {
+  	return {initialized: false};
+  }
+  appIsInitialized(name) {
+  	return this.apps[name] && this.apps[name].initialized === true;
+  }
+  setAppInitialized(name) {
+  	if (this.apps[name]) {
+    	this.apps[name] = {initialized: true};
+    }
+  }
+  allAppsInitialized() {
+  	for (let k in this.apps) {
+    	if (this.apps[k].initialized !== true) {
+      	return false;
+      }
+    }
+    return true;
+  }
+}
+
+global.appRegistry = new AppRegistry();
 
 /**
  * 
@@ -51,8 +93,8 @@ export function startHotReloadBuild() {
  * 
  */
 export function sendHotReloadChangeNotification(done) {
-    if (global.hotReloadNotificationSocket) {
-        global.hotReloadNotificationSocket.emit('onFileChange');
+    if (global.hotReloadNotificationSocket && global.appRegistry.allAppsInitialized()) {
+        hotReloadSubject.next(true);
     }
     return Promise.resolve({});
 }
@@ -91,6 +133,7 @@ export function build(opts) {
         
         let changeHandler = (err, stats) => {
             console.log(chalk.underline.bold.bgRed.yellow('Core source has been reloaded'));
+            global.appRegistry.setAppInitialized("core");
             sendHotReloadChangeNotification();
         };
 
