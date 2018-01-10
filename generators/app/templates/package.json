@@ -11,7 +11,9 @@
         "package:production": "cross-var gulp build-package --env=production --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
         "serve": "gulp serve"
     },
-    "dependencies": {},
+    "dependencies": {
+        "rxjs": "^5.5.2"
+    },
     "devDependencies": {
         "@types/chrome": "0.0.58",
         "babel-core": "^6.26.0",
