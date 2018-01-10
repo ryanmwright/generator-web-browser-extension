@@ -7,8 +7,8 @@
         "build:test": "gulp build --env=test",
         "build:prod": "gulp build --env=production",
         "build:production": "gulp build --env=production",
-        "package:prod": "cross-var gulp build-package --env=production --packageName=$npm_package_name.$npm_package_version",
-        "package:production": "cross-var gulp build-package --env=production --packageName=$npm_package_name.$npm_package_version",
+        "package:prod": "cross-var gulp build-package --env=production --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
+        "package:production": "cross-var gulp build-package --env=production --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
         "serve": "gulp serve"
     },
     "dependencies": {},
@@ -27,6 +27,7 @@
         "file-loader": "^1.1.5",
         "gulp": "github:gulpjs/gulp#4.0",
         "gulp-cli": "^2.0.0",
+        "gulp-json-editor": "^2.2.1",
         "gulp-zip": "^4.1.0",
         "html-loader": "^0.5.1",
         "json-post-process-webpack-plugin": "^1.3.0",

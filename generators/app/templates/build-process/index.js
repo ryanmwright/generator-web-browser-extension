@@ -8,6 +8,7 @@ import io from 'socket.io';
 import del from 'del';
 import zip from 'gulp-zip';
 import { Subject, Observable } from 'rxjs';
+import jeditor from 'gulp-json-editor';
 
 const hotReloadSubject = new Subject();
 const delayBetweenEventNotifications = 500;
@@ -158,10 +159,23 @@ export function cleanPackage(opts) {
 /**
  * 
  */
+export function patchManifestJson(opts) {
+    return function patchManifestJson() {
+        return gulp.src(path.resolve(getEnvironmentDistDirectory(opts.env), 'manifest.json'))
+            .pipe(jeditor({
+                version: opts.packageVersion
+            }))
+            .pipe(gulp.dest(path.resolve(getEnvironmentDistDirectory(opts.env))), 'manifest.json');
+    }
+}
+
+/**
+ * 
+ */
 export function packageDist(opts) {
     return function packageDist() {
         return gulp.src(path.resolve(getEnvironmentDistDirectory(opts.env), '**/*'))
-            .pipe(zip(`${opts.packageName}.zip`))
+            .pipe(zip(`${opts.packageName}.${opts.packageVersion}.zip`))
             .pipe(gulp.dest(path.resolve(getEnvironmentPackageDirectory(opts.env))));
     };
 }
