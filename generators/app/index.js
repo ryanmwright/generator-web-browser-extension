@@ -70,6 +70,11 @@ module.exports = class extends Generator {
             this.destinationRoot()
         );
 
+        this.fs.copyTpl(
+            this.templatePath('**/*.md'),
+            this.destinationRoot()
+        );
+
         this.fs.copy(
             this.templatePath('**/.*'),
             this.destinationRoot()

@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -114,11 +115,25 @@ module.exports = (env, watch) => {
     output: {
       filename: './[name].js',
       path: path.resolve(__dirname, env.outputPath || 'dist')
+    },
+    resolve: {
+      extensions: [ '.ts' ]
     }
   };
 
   if (watch) {
     result.entry.reloader = extensionPath + 'background/reloader.ts';
+  }
+
+  if (env) {
+    const configFilePath = path.resolve(__dirname, '../src/environments/environment.' + env + '.ts');
+
+    if (fs.existsSync(configFilePath)) {
+      result.plugins.push(new webpack.NormalModuleReplacementPlugin(/\.\/environments\/environment$/, configFilePath));
+      result.resolve.alias = {
+        environment: configFilePath
+      };
+    }
   }
 
   return result;
