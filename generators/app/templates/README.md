@@ -1,6 +1,6 @@
 # generator-web-browser-extension
 
-This is a Yeoman generator that scaffolds (typescript) code for a browser extension compatible with browsers that utilize the WebExtensions API (i.e. Chrome/Firefox/Edge). 
+This is a browser extension compatible with browsers that utilize the WebExtensions API (i.e. Chrome/Firefox/Edge). 
 
 # Getting started
 
