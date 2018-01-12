@@ -117,7 +117,7 @@ module.exports = (env, watch) => {
       path: path.resolve(__dirname, env.outputPath || 'dist')
     },
     resolve: {
-      extensions: [ '.ts' ]
+      extensions: [ '.tsx', '.ts', '.js' ]
     }
   };
 

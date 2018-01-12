@@ -7,8 +7,8 @@
         "build:test": "gulp build --env=test",
         "build:prod": "gulp build --env=production",
         "build:production": "gulp build --env=production",
-        "package:prod": "cross-var gulp build-package --env=production --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
-        "package:production": "cross-var gulp build-package --env=production --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
+        "package:prod": "cross-var gulp build-package --env=prod --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
+        "package:production": "cross-var gulp build-package --env=prod --packageName=$npm_package_name --buildVersion=$npm_config_buildVersion --defaultBuildVersion=$npm_package_version",
         "serve": "gulp serve"
     },
     "dependencies": {
@@ -41,7 +41,7 @@
         "style-loader": "^0.19.0",
         "ts-loader": "^3.1.1",
         "tslint": "~5.7.0",
-        "typescript": "^2.3.4",
+        "typescript": "^2.5.3",
         "typings-for-css-modules-loader": "^1.7.0",
         "url-loader": "^0.6.2",
         "webpack": "^2.5.1",

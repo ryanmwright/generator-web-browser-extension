@@ -52,7 +52,7 @@ function _build(opts) {
             }
     
             args.push('--app=' + opts.app);
-            args.push('--deploy-url=' + opts.app + '');
+            args.push('--deploy-url=' + opts.app + '/');
             args.push('--output-path=' + path.join(getEnvironmentDistDirectory(opts.env), opts.app));
     
             const handle = childProcess.spawn(cmd, args);
