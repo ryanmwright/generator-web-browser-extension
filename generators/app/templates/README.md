@@ -24,4 +24,4 @@ To package your application for production run:
 npm run package:prod --buildVersion=1.0.0
 ```
 
-This will create a 'package' folder under 'build-process/dist/production'. That folder contains a zip folder with your packaged app, and patched manifest.json with 1.0.0 as the version that can be uploaded to the store. If you leave off the buildVersion argument, the version in your package.json file is used.
+This will create a 'package' folder under 'build-process/dist/prod'. That folder contains a zip folder with your packaged app, and patched manifest.json with 1.0.0 as the version that can be uploaded to the store. If you leave off the buildVersion argument, the version in your package.json file is used.
