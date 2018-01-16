@@ -6,18 +6,18 @@
   "apps": [
     {
       "name": "action",
-      "root": "src",
+      "root": "src/action",
       "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "index": "index.html",
-      "main": "action/main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "main": "main.ts",
+      "polyfills": "../polyfills.ts",
+      "test": "../test.ts",
+      "tsconfig": "../tsconfig.app.json",
+      "testTsconfig": "../tsconfig.spec.json",
       "prefix": "action",
       "styles": [
         "styles.css"
@@ -31,18 +31,18 @@
     },
     {
       "name": "options",
-      "root": "src",
+      "root": "src/options",
       "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "index": "index.html",
-      "main": "options/main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "main": "main.ts",
+      "polyfills": "../polyfills.ts",
+      "test": "../test.ts",
+      "tsconfig": "../tsconfig.app.json",
+      "testTsconfig": "../tsconfig.spec.json",
       "prefix": "options",
       "styles": [
         "styles.css"
