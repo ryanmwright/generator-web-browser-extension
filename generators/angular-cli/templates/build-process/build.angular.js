@@ -38,7 +38,8 @@ function _build(opts) {
                 'run',
                 'ng',
                 'build',
-                '--'
+                '--',
+                '--sourcemap'
             ];
     
             if (opts.watch) {

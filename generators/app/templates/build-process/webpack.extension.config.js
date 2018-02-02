@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const JsonPostProcessPlugin = require('json-post-process-webpack-plugin');
 const extend = require('util')._extend;
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const excludeFromCssModules = modulePath => {
 
@@ -92,6 +93,9 @@ module.exports = (env, watch) => {
       ]),
       // Extract all CSS to this file
       new ExtractTextPlugin('content.css'),
+      new UglifyJSPlugin({
+        sourceMap: true
+      }),
       new CopyWebpackPlugin([{
         context: extensionPath,
         from: 'manifest.json',
