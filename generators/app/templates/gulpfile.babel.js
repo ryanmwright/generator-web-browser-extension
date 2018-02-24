@@ -21,5 +21,5 @@ const clean = customClean || coreClean;
 
 gulp.task('clean', clean(opts));
 gulp.task('build', build(Object.assign({}, opts, {watch: false})));
-gulp.task('build-package', gulp.series(build(Object.assign({}, opts, {watch: false})), cleanPackage(opts), patchManifestJson(opts), packageDist(opts)));
+gulp.task('build-package', gulp.series(build(Object.assign({}, opts, {watch: false, uglify: true})), cleanPackage(opts), patchManifestJson(opts), packageDist(opts)));
 gulp.task('serve', gulp.series(startHotReloadBuild, build(Object.assign({}, opts, {watch: true}), endHotReloadBuild)));

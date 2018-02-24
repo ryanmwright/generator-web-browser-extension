@@ -130,7 +130,7 @@ export function build(opts) {
         let configFileName = !opts.env || !fs.existsSync('./webpack.extension.config.' + opts.env.toLowerCase() + '.js')
             ? './webpack.extension.config.js' : './webpack.extension.config.' + opts.env.toLowerCase() + '.js';
 
-        let config = require(configFileName)(opts.env, opts.watch);
+        let config = require(configFileName)(opts.env, opts.watch, opts.uglify);
         
         let changeHandler = (err, stats) => {
             console.log(chalk.underline.bold.bgRed.yellow('Core source has been reloaded'));

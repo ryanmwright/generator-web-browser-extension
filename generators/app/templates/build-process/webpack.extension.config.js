@@ -27,7 +27,7 @@ const updateManifestJson = (json, watch) => {
   return newJson;
 };
 
-module.exports = (env, watch) => {
+module.exports = (env, watch, uglify) => {
   const extensionPath = './src/';
 
   let result = {
@@ -93,9 +93,6 @@ module.exports = (env, watch) => {
       ]),
       // Extract all CSS to this file
       new ExtractTextPlugin('content.css'),
-      new UglifyJSPlugin({
-        sourceMap: true
-      }),
       new CopyWebpackPlugin([{
         context: extensionPath,
         from: 'manifest.json',
@@ -127,6 +124,12 @@ module.exports = (env, watch) => {
 
   if (watch) {
     result.entry.reloader = extensionPath + 'background/reloader.ts';
+  }
+
+  if (uglify) {
+    result.plugins.push(new UglifyJSPlugin({
+      sourceMap: true
+    }));
   }
 
   if (env) {
